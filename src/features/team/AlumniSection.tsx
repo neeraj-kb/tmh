@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, X } from "lucide-react";
 
 interface AlumniMember {
   id: number | string;
   name: string;
-  status: string;
   role: string;
   image: string;
   linkedin?: string;
@@ -18,121 +17,141 @@ const alumniByYear: Record<string, AlumniMember[]> = {
     {
       id: "aditya-narayan",
       name: "Aditya Narayan",
-      status: "Alumni",
-      role: "Powertrain",
+      role: "Media & Marketing",
       image: "/images/alumni/Aditya Narayan.webp",
       linkedin: "#",
     },
     {
       id: "dhanush",
       name: "Dhanush",
-      status: "Alumni",
-      role: "Electrical",
+      role: "",
       image: "/images/alumni/Dhanush.webp",
       linkedin: "#",
     },
     {
       id: "fardeen",
       name: "Fardeen",
-      status: "Alumni",
-      role: "Suspension",
+      role: "Corporate Relationship",
       image: "/images/alumni/Fardeen.webp",
       linkedin: "#",
     },
     {
       id: "gajendra",
       name: "Gajendra",
-      status: "Alumni",
-      role: "Aerodynamics",
+      role: "Chassis",
       image: "/images/alumni/Gajendra.webp",
       linkedin: "#",
     },
     {
       id: "karthik",
       name: "Karthik",
-      status: "Alumni",
-      role: "Telemetry",
+      role: "Chassis",
       image: "/images/alumni/Karthik.webp",
       linkedin: "#",
     },
     {
       id: "mokshith",
       name: "Mokshith",
-      status: "Alumni",
-      role: "Drivetrain",
+      role: "Powerunit",
       image: "/images/alumni/Mokshith.webp",
       linkedin: "#",
     },
     {
       id: "nishitha",
       name: "Nishitha",
-      status: "Alumni",
-      role: "Design",
+      role: "Corporate Relationship",
       image: "/images/alumni/Nishitha.webp",
       linkedin: "#",
     },
     {
       id: "pavan",
       name: "Pavan",
-      status: "Alumni",
-      role: "Suspension",
+      role: "Chassis",
       image: "/images/alumni/Pavan.webp",
       linkedin: "#",
     },
     {
       id: "raj-surya",
       name: "Raj Surya",
-      status: "Alumni",
-      role: "Chassis Lead",
+      role: "Finance",
       image: "/images/alumni/Raj Surya.webp",
       linkedin: "#",
     },
     {
       id: "sahil",
       name: "Sahil",
-      status: "Alumni",
-      role: "Powertrain",
+      role: "Telemetry",
       image: "/images/alumni/Sahil.webp",
       linkedin: "#",
     },
     {
       id: "sharath",
       name: "Sharath",
-      status: "Alumni",
-      role: "Brakes & Hydraulics",
+      role: "Telemetry",
       image: "/images/alumni/Sharath.webp",
       linkedin: "#",
     },
     {
       id: "tanish",
       name: "Tanish",
-      status: "Alumni",
-      role: "Aerodynamics",
+      role: "Telemetry",
       image: "/images/alumni/Tanish.webp",
       linkedin: "#",
     },
     {
       id: "tharun",
       name: "Tharun",
-      status: "Alumni",
-      role: "Manufacturing",
+      role: "Telemetry",
       image: "/images/alumni/Tharun.webp",
       linkedin: "#",
     },
     {
       id: "vikas",
       name: "Vikas",
-      status: "Alumni",
-      role: "Operations",
+      role: "Telemetry",
       image: "/images/alumni/Vikas.webp",
       linkedin: "#",
     },
     {
       id: "vinay",
       name: "Vinay",
-      status: "Alumni",
-      role: "Vehicle Dynamics Lead",
+      role: "Brakes",
       image: "/images/alumni/Vinay.webp",
+      linkedin: "#",
+    },
+    {
+      id: "ks-ram-kumar",
+      name: "K S Ram Kumar",
+      role: "",
+      image: "/images/alumni/Ram.webp",
+      linkedin: "#",
+    },
+    {
+      id: "bhoomika-kb",
+      name: "Bhoomika K B",
+      role: "",
+      image: "/images/alumni/Bhoomika.webp",
+      linkedin: "#",
+    },
+    {
+      id: "rohan",
+      name: "Rohan",
+      role: "Electrical",
+      image: "/images/alumni/Rohan.webp",
+      linkedin: "#",
+    },
+    {
+      id: "nb-naveen-raj",
+      name: "N B Naveen Raj",
+      role: "",
+      image: "/images/alumni/Naveen.webp",
+      linkedin: "#",
+    },
+    {
+      id: "kiran-kumar-n",
+      name: "Kiran Kumar N",
+      role: "Chassis",
+      image: "/images/alumni/Kiran.webp",
       linkedin: "#",
     },
   ],
@@ -140,7 +159,6 @@ const alumniByYear: Record<string, AlumniMember[]> = {
     {
       id: "adithya-hiremath",
       name: "Adithya Hiremath",
-      status: "Alumni",
       role: "Operations Lead",
       image: "/images/alumni/Adithya Hiremath.webp",
       linkedin: "#",
@@ -148,7 +166,6 @@ const alumniByYear: Record<string, AlumniMember[]> = {
     {
       id: "bharath-vr",
       name: "Bharath V R",
-      status: "Alumni",
       role: "Chassis",
       image: "/images/alumni/Bharath V R.webp",
       linkedin: "#",
@@ -156,7 +173,6 @@ const alumniByYear: Record<string, AlumniMember[]> = {
     {
       id: "ganesh",
       name: "Ganesh",
-      status: "Alumni",
       role: "Manufacturing",
       image: "/images/alumni/Ganesh.webp",
       linkedin: "#",
@@ -164,7 +180,6 @@ const alumniByYear: Record<string, AlumniMember[]> = {
     {
       id: "karthik-yadav",
       name: "Karthik Yadav",
-      status: "Alumni",
       role: "Vehicle Dynamics",
       image: "/images/alumni/Karthik Yadav.webp",
       linkedin: "#",
@@ -172,7 +187,6 @@ const alumniByYear: Record<string, AlumniMember[]> = {
     {
       id: "manish",
       name: "Manish",
-      status: "Alumni",
       role: "Electronics",
       image: "/images/alumni/Manish.webp",
       linkedin: "#",
@@ -180,7 +194,6 @@ const alumniByYear: Record<string, AlumniMember[]> = {
     {
       id: "syeeda-aiemen",
       name: "Syeeda Aiemen Dania Saleem",
-      status: "Alumni",
       role: "Electronics Lead",
       image: "/images/alumni/Syeeda Aiemen Dania Saleem.webp",
       linkedin: "#",
@@ -195,6 +208,7 @@ export default function AlumniSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedYear, setSelectedYear] = useState(batchYears[0]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedPerson, setSelectedPerson] = useState<AlumniMember | null>(null);
 
   const alumni = alumniByYear[selectedYear] || [];
 
@@ -247,9 +261,8 @@ export default function AlumniSection() {
             <span className="font-heading font-bold">{selectedYear}</span>
             <ChevronDown
               size={18}
-              className={`transition-transform duration-200 ${
-                isDropdownOpen ? "rotate-180" : ""
-              }`}
+              className={`transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""
+                }`}
             />
           </button>
 
@@ -262,11 +275,10 @@ export default function AlumniSection() {
                     setSelectedYear(year);
                     setIsDropdownOpen(false);
                   }}
-                  className={`w-full text-left px-4 py-3 hover:bg-white/5 transition-colors font-heading text-sm ${
-                    selectedYear === year
-                      ? "text-primary bg-primary/10"
-                      : "text-white"
-                  }`}
+                  className={`w-full text-left px-4 py-3 hover:bg-white/5 transition-colors font-heading text-sm ${selectedYear === year
+                    ? "text-primary bg-primary/10"
+                    : "text-white"
+                    }`}
                 >
                   {year}
                 </button>
@@ -300,7 +312,8 @@ export default function AlumniSection() {
                 {alumni.map((person) => (
                   <div
                     key={person.id}
-                    className="snap-start w-[42vw] sm:w-[200px] md:w-[220px] lg:w-[240px] flex-none flex flex-col bg-[#121212] border border-white/5 rounded-xl overflow-hidden hover:border-white/10 transition-colors"
+                    onClick={() => setSelectedPerson(person)}
+                    className="snap-start w-[42vw] sm:w-[200px] md:w-[220px] lg:w-[240px] flex-none flex flex-col bg-[#121212] border border-white/5 rounded-xl overflow-hidden hover:border-white/20 transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-xl hover:shadow-black/40"
                   >
                     <div className="aspect-square bg-neutral-900 relative">
                       <img
@@ -318,9 +331,7 @@ export default function AlumniSection() {
                       <h3 className="font-heading font-bold text-lg mb-1">
                         {person.name}
                       </h3>
-                      <p className="text-primary text-xs font-semibold mb-1 uppercase tracking-wider">
-                        {person.status}
-                      </p>
+
                       <p className="text-muted-foreground text-xs mb-1">
                         {person.role}
                       </p>
@@ -329,6 +340,7 @@ export default function AlumniSection() {
                           href={person.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                           className="text-muted-foreground hover:text-white transition-colors text-xs inline-block mt-1"
                           aria-label={`${person.name} LinkedIn`}
                         >
@@ -363,17 +375,81 @@ export default function AlumniSection() {
                     }
                   }}
                   aria-label={`Go to slide ${index + 1}`}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    index === activeIndex
-                      ? "bg-primary"
-                      : "bg-white/20 hover:bg-white/40"
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-colors ${index === activeIndex
+                    ? "bg-primary"
+                    : "bg-white/20 hover:bg-white/40"
+                    }`}
                 />
               ))}
             </div>
           </>
         )}
       </div>
+
+      {/* Alumni Profile Popup Modal */}
+      {selectedPerson && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          onClick={() => setSelectedPerson(null)}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+
+          {/* Modal */}
+          <div
+            className="relative bg-[#1a1a1a] border border-white/10 rounded-2xl overflow-hidden max-w-2xl w-full flex flex-col sm:flex-row shadow-2xl animate-in fade-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedPerson(null)}
+              className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/60 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
+              aria-label="Close"
+            >
+              <X size={18} />
+            </button>
+
+            {/* Photo */}
+            <div className="sm:w-1/2 aspect-square sm:aspect-auto bg-neutral-900 relative">
+              <img
+                src={selectedPerson.image}
+                alt={selectedPerson.name}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                    selectedPerson.name,
+                  )}&background=202020&color=fff&size=400`;
+                }}
+              />
+            </div>
+
+            {/* Info */}
+            <div className="sm:w-1/2 p-6 sm:p-8 flex flex-col justify-center">
+              <span className="inline-block text-primary font-heading text-lg font-bold uppercase tracking-widest mb-4">
+                Alumni
+              </span>
+              <h3 className="font-heading font-bold text-2xl sm:text-3xl mb-2">
+                {selectedPerson.name}
+              </h3>
+              {selectedPerson.role && (
+                <p className="text-muted-foreground text-sm uppercase tracking-widest font-semibold mb-6">
+                  {selectedPerson.role}
+                </p>
+              )}
+              {selectedPerson.linkedin && selectedPerson.linkedin !== "#" && (
+                <a
+                  href={selectedPerson.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-white transition-colors text-sm underline underline-offset-4"
+                >
+                  LinkedIn
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
