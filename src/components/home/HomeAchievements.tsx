@@ -25,7 +25,7 @@ export default function HomeAchievements() {
       {/* Header */}
       <div className="mb-8 md:mb-12">
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-[#D71920] font-bold text-lg leading-none font-mono">//</span>
+          <span className="text-[#D71920] font-bold text-lg leading-none font-mono">{"//"}</span>
           <span className="text-[#D71920] font-mono text-[11px] tracking-[0.3em] uppercase font-bold">
             TRACK RECORD
           </span>

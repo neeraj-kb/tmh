@@ -13,7 +13,10 @@ export default function HomeEventCountdown() {
   const [timeLeft, setTimeLeft] = useState(() => getTimeRemaining(event.startDate));
 
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -36,7 +39,7 @@ export default function HomeEventCountdown() {
         </div>
         <div className="text-zinc-500 font-mono text-xs md:text-sm tracking-widest hidden md:flex items-center gap-2">
           <span>SYS.STATUS</span>
-          <span className="text-white/20">//</span>
+          <span className="text-white/20">{"//"}</span>
           <span className="text-[#D71920] flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#D71920] animate-pulse" />
             COUNTDOWN ACTIVE

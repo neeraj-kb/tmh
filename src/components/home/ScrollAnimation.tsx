@@ -68,7 +68,7 @@ export default function ScrollAnimation({ onProgress, onLoadComplete }: ScrollAn
     loadImages();
   }, [onProgress, onLoadComplete]);
 
-  const render = () => {
+  function render() {
     if (!canvasRef.current || imagesRef.current.length === 0) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -158,7 +158,8 @@ export default function ScrollAnimation({ onProgress, onLoadComplete }: ScrollAn
           start: "top top",
           end: "bottom bottom", 
           scrub: 0.5, 
-          onToggle: (self) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          onToggle: (self: any) => {
             isActiveSection = self.isActive;
             if (self.isActive && !isProgrammaticScroll) {
               startAutoScroll();
